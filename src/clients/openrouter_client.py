@@ -8,8 +8,8 @@ import time
 
 import requests
 
-from surge_gdp_benchmark.common import JsonValue, Sample, jsonable
-from surge_gdp_benchmark.vendor_clients import require_dict, require_int, require_key
+from common import JsonValue, Sample, jsonable
+from vendor_clients import require_dict, require_int, require_key
 
 OPENROUTER_CHAT_COMPLETIONS_URL = "https://openrouter.ai/api/v1/chat/completions"
 OPENROUTER_API_DOCS: dict[str, str] = {

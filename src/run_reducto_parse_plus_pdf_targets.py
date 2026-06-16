@@ -14,7 +14,7 @@ import requests
 from openai import OpenAIError
 from reducto import Reducto
 
-from surge_gdp_benchmark.common import (
+from common import (
     JsonValue,
     ModelKey,
     Sample,
@@ -31,7 +31,7 @@ from surge_gdp_benchmark.common import (
     write_target_result,
     write_text,
 )
-from surge_gdp_benchmark.vendor_clients import (
+from vendor_clients import (
     call_target_model,
     require_dict,
     require_key,

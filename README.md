@@ -118,5 +118,5 @@ Messages API request limit.
 ## Costs
 
 Costs are estimated locally from provider usage fields and the pricing constants
-in `surge_gdp_benchmark.vendor_clients`. Prompt-cache discounts are ignored so
+in `vendor_clients`. Prompt-cache discounts are ignored so
 comparisons assume zero cache usage.
