@@ -9,11 +9,11 @@ from pathlib import Path
 
 import requests
 
-from surge_gdp_benchmark.clients.openrouter_client import (
+from clients.openrouter_client import (
     DEFAULT_OPENROUTER_JUDGE_MODEL,
     call_openrouter_judge,
 )
-from surge_gdp_benchmark.common import (
+from common import (
     Arm,
     JsonValue,
     ModelKey,
@@ -29,7 +29,7 @@ from surge_gdp_benchmark.common import (
     target_dir,
     write_json,
 )
-from surge_gdp_benchmark.vendor_clients import require_dict, require_key
+from vendor_clients import require_dict, require_key
 
 JUDGE_PROVIDER = "openrouter"
 JUDGE_MODEL = DEFAULT_OPENROUTER_JUDGE_MODEL

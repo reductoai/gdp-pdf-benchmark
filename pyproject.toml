@@ -15,13 +15,17 @@ dependencies = [
 ]
 
 [project.scripts]
-gdp-run-pdf = "surge_gdp_benchmark.run_pdf_targets:main"
-gdp-run-reducto-pdf = "surge_gdp_benchmark.run_reducto_parse_plus_pdf_targets:main"
-gdp-judge = "surge_gdp_benchmark.judge_targets:main"
+gdp-run-pdf = "run_pdf_targets:main"
+gdp-run-reducto-pdf = "run_reducto_parse_plus_pdf_targets:main"
+gdp-judge = "judge_targets:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+sources = ["src"]
 
 [tool.ruff]
 line-length = 100

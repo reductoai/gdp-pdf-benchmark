@@ -9,8 +9,8 @@ from typing import Protocol
 from google import genai
 from google.genai import types
 
-from surge_gdp_benchmark.common import JsonValue, Sample, jsonable
-from surge_gdp_benchmark.vendor_clients import (
+from common import JsonValue, Sample, jsonable
+from vendor_clients import (
     MODEL_SPECS,
     TargetResponse,
     UploadedPdf,

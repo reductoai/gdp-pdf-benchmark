@@ -13,8 +13,8 @@ import time
 import anthropic
 from anthropic.types import Message
 
-from surge_gdp_benchmark.common import JsonValue, Sample, jsonable
-from surge_gdp_benchmark.vendor_clients import (
+from common import JsonValue, Sample, jsonable
+from vendor_clients import (
     MODEL_SPECS,
     TargetResponse,
     require_dict,

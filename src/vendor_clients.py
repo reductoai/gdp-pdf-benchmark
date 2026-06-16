@@ -5,7 +5,7 @@ from __future__ import annotations
 import dataclasses
 from typing import Literal, cast
 
-from surge_gdp_benchmark.common import JsonValue, ModelKey, Sample
+from common import JsonValue, ModelKey, Sample
 
 Provider = Literal["openai", "anthropic", "google"]
 
@@ -278,13 +278,13 @@ def call_target_model(
     uploaded_pdf: UploadedPdf | None = None,
 ) -> TargetResponse:
     if model_key == "gpt_5_5":
-        from surge_gdp_benchmark.clients.openai_client import call_openai
+        from clients.openai_client import call_openai
 
         return call_openai(sample=sample, prompt_text=prompt_text)
     if model_key == "opus_4_8":
-        from surge_gdp_benchmark.clients.anthropic_client import call_anthropic
+        from clients.anthropic_client import call_anthropic
 
         return call_anthropic(sample=sample, prompt_text=prompt_text)
-    from surge_gdp_benchmark.clients.google_client import call_google
+    from clients.google_client import call_google
 
     return call_google(sample=sample, prompt_text=prompt_text, uploaded_pdf=uploaded_pdf)

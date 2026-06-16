@@ -11,7 +11,7 @@ from pathlib import Path
 import anthropic
 from openai import OpenAIError
 
-from surge_gdp_benchmark.common import (
+from common import (
     ModelKey,
     Sample,
     default_output_dir,
@@ -23,7 +23,7 @@ from surge_gdp_benchmark.common import (
     write_target_error,
     write_target_result,
 )
-from surge_gdp_benchmark.vendor_clients import (
+from vendor_clients import (
     call_target_model,
     target_artifact,
 )
