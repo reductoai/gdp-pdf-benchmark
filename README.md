@@ -3,10 +3,14 @@
 Standalone runners for reproducing GDP.pdf target generation and rubric judging.
 
 The dataset is loaded from the public Hugging Face dataset
-`surgeai/GDP.pdf`. PDF input is sent per provider in whichever way that
-provider supports best: OpenAI receives the public Hugging Face
-`/resolve/main/...` URL, while Google and Anthropic upload the PDF via their
-Files APIs (see [Provider PDF Input](#provider-pdf-input)).
+[`surgeai/GDP.pdf`](https://huggingface.co/datasets/surgeai/GDP.pdf). PDF input
+is sent per provider in whichever way that provider supports best: OpenAI
+receives the public Hugging Face `/resolve/main/...` URL, while Google and
+Anthropic upload the PDF via their Files APIs (see
+[Provider PDF Input](#provider-pdf-input)).
+
+Official results are published on the
+[Surge GDP.pdf leaderboard](https://surgehq.ai/leaderboards/gdp-pdf).
 
 ## Setup
 
