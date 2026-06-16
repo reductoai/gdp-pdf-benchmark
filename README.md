@@ -3,8 +3,10 @@
 Standalone runners for reproducing GDP.pdf target generation and rubric judging.
 
 The dataset is loaded from the public Hugging Face dataset
-`surgeai/GDP.pdf`. PDFs are referenced with public Hugging Face
-`/resolve/main/...` URLs where provider APIs support URL-backed PDF input.
+`surgeai/GDP.pdf`. PDF input is sent per provider in whichever way that
+provider supports best: OpenAI receives the public Hugging Face
+`/resolve/main/...` URL, while Google and Anthropic upload the PDF via their
+Files APIs (see [Provider PDF Input](#provider-pdf-input)).
 
 ## Setup
 
@@ -108,12 +110,19 @@ export GDP_PDF_OPENROUTER_TIMEOUT_S=900
 export GDP_PDF_OPENROUTER_MAX_TOKENS=16384
 ```
 
-## Anthropic PDF Input
+## Provider PDF Input
 
-For Anthropic, this repo uses URL-backed PDF document sources with the public
-Hugging Face `/resolve/main/...` URL. This avoids base64 request-body 413s for
-PDFs whose raw size is below 32 MB but whose base64 JSON payload is above the
-Messages API request limit.
+Each provider receives the PDF in the way that provider handles most reliably:
+
+- **OpenAI** references the PDF by the public Hugging Face `/resolve/main/...`
+  URL (`input_file.file_url`).
+- **Google** uploads the PDF via the Gemini Files API and references the
+  returned file URI.
+- **Anthropic** uploads the PDF via the Files API (`document.source.file_id`,
+  beta `files-api-2025-04-14`) and streams the response. Uploading avoids the
+  URL validator and base64 request-body limits that reject large PDFs, and
+  streaming keeps long `effort=max` generations from stalling silently. The
+  file is uploaded once per sample and reused across both arms.
 
 ## Costs
 
