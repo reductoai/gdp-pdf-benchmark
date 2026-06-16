@@ -1,0 +1,31 @@
+[project]
+name = "surge-gdp-benchmark"
+version = "0.1.0"
+description = "Standalone GDP.pdf benchmark runners for native PDF and Reducto comparisons."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "anthropic>=0.67.0",
+  "datasets>=3.6.0",
+  "google-genai>=1.20.0",
+  "huggingface-hub>=0.33.0",
+  "openai>=1.90.0",
+  "reductoai>=0.8.0",
+  "requests>=2.32.0",
+]
+
+[project.scripts]
+gdp-run-pdf = "surge_gdp_benchmark.run_pdf_targets:main"
+gdp-run-reducto-pdf = "surge_gdp_benchmark.run_reducto_parse_plus_pdf_targets:main"
+gdp-judge = "surge_gdp_benchmark.judge_targets:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
