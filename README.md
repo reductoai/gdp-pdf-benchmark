@@ -1,6 +1,14 @@
-# Surge GDP.pdf Benchmark
+# Reducto Parse on the Surge GDP.pdf Benchmark
 
-Standalone runners for reproducing GDP.pdf target generation and rubric judging.
+The **GDP.pdf benchmark** is a document-QA benchmark created and maintained by
+[Surge AI](https://surgehq.ai/leaderboards/gdp-pdf). The dataset, tasks, and
+rubric grading methodology are Surge's, and official results live on their
+[GDP.pdf leaderboard](https://surgehq.ai/leaderboards/gdp-pdf).
+
+This repository is [Reducto](https://reducto.ai)'s evaluation harness on top of
+that benchmark. It provides standalone runners that measure how augmenting a
+model's native PDF input with a Reducto parse changes performance on Surge's
+tasks, alongside a native-PDF baseline.
 
 The dataset is loaded from the public Hugging Face dataset
 [`surgeai/GDP.pdf`](https://huggingface.co/datasets/surgeai/GDP.pdf). PDF input
@@ -8,9 +16,6 @@ is sent per provider in whichever way that provider supports best: OpenAI
 receives the public Hugging Face `/resolve/main/...` URL, while Google and
 Anthropic upload the PDF via their Files APIs (see
 [Provider PDF Input](#provider-pdf-input)).
-
-Official results are published on the
-[Surge GDP.pdf leaderboard](https://surgehq.ai/leaderboards/gdp-pdf).
 
 ## Setup
 
@@ -51,6 +56,8 @@ answers, target metadata, Reducto parse artifacts, grades, and `summary.json`
 under that artifact directory.
 
 ## Benchmark Arms
+
+The two input conditions this harness compares on Surge's tasks:
 
 `plain_pdf` sends the native PDF input first, then `row["prompt"]` verbatim.
 
@@ -100,8 +107,8 @@ uv run gdp-judge \
 
 ## Judging
 
-Rubric judging follows the dataset evaluation instruction: for each example,
-score the response against the rubric columns independently. The current judge
+Rubric judging follows Surge's evaluation instruction from the dataset: for each
+example, score the response against the rubric columns independently. The current judge
 is text-only: it uses OpenRouter `deepseek/deepseek-v4-pro`, receives the
 original question, the target response, and all rubric items for the sample in
 one LLM call, but does not receive the source PDF or provider PDF-parser output.
